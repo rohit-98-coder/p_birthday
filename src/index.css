@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Playfair Display", serif;
+  --font-script: "Caveat", cursive;
+  --font-body: "Quicksand", sans-serif;
+  --color-rose: #b8265a;
+  --color-rose-mid: #e2578a;
+  --color-rose-soft: #f6c3d4;
+  --color-rose-deep: #7d1740;
+  --color-gold: #c8912e;
+  --color-gold-soft: #f4e2b0;
+  --color-gold-bright: #f0c869;
+  --color-mint: #5fb894;
+  --color-lav: #9a7bd1;
+  --color-bg: #fdf5f3;
+  --color-bg2: #ffe3ec;
+  --color-card: #fffdfb;
+  --color-text: #391526;
+  --color-text-soft: #8a5f70;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-text);
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.font-display { font-family: var(--font-display); }
+.font-script { font-family: var(--font-script); }
+
+.grad-text {
+  background: linear-gradient(100deg, #7d1740 0%, #b8265a 20%, #f0c869 45%, #e2578a 70%, #7d1740 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 250% auto;
+  animation: shine 7s linear infinite;
+}
+
+@keyframes shine {
+  to { background-position: 250% center; }
+}
+
+.dark body, body.dark {
+  --color-bg: #150810;
+  --color-bg2: #241019;
+  --color-card: #26121e;
+  --color-rose: #f0709a;
+  --color-rose-mid: #e88bab;
+  --color-rose-soft: #552a3a;
+  --color-rose-deep: #ffb3cd;
+  --color-gold: #e8c26b;
+  --color-gold-soft: #3d3020;
+  --color-gold-bright: #f3d488;
+  --color-text: #fbe8ee;
+  --color-text-soft: #cf9cb0;
+}
+
+/* Soft glass card */
+.glass {
+  background: rgba(255, 253, 251, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.dark .glass {
+  background: rgba(38, 18, 30, 0.7);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #f6c3d4; border-radius: 999px; }
+.dark ::-webkit-scrollbar-thumb { background: #552a3a; }
+
+/* Respect OS-level reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
